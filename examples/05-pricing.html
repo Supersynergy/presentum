@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing — Presentum</title>
+<style>
+  :root{
+    --bg:#0c0d12; --fg:#f3f3f7; --muted:#9b9aa8; --line:#23242e; --card:#14151c;
+    --a:#6d5cff; --a2:#1fd1a5; --gold:#e7c66a;
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif;
+    --serif:ui-serif,Georgia,serif;
+  }
+  *{box-sizing:border-box;margin:0}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  body{background:var(--bg);color:var(--fg);font-family:var(--sans);line-height:1.6;padding:64px 20px 100px;position:relative;overflow-x:hidden}
+  body::before{content:"";position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:600px;z-index:-1;
+    background:radial-gradient(50% 50% at 50% 50%,color-mix(in srgb,var(--a) 35%,transparent),transparent 70%);filter:blur(60px);opacity:.5}
+  header{text-align:center;max-width:640px;margin:0 auto 48px}
+  .kick{color:var(--a2);font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+  h1{font-family:var(--serif);font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;letter-spacing:-.02em;margin:.2em 0;text-wrap:balance}
+  header p{color:var(--muted);font-size:1.1rem;text-wrap:pretty}
+  .toggle{display:inline-flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:4px;margin-top:18px;font-size:13px}
+  .toggle button{border:0;background:transparent;color:var(--muted);padding:7px 16px;border-radius:99px;cursor:pointer;font:inherit}
+  .toggle button.on{background:var(--a);color:#fff}
+  .save{color:var(--a2);font-size:12px;font-weight:600}
+
+  .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:980px;margin:0 auto}
+  .tier{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 26px;position:relative;display:flex;flex-direction:column;gap:14px;transition:transform .2s,border-color .2s}
+  .tier:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--a) 50%,var(--line))}
+  .tier.pop{border-color:var(--a);box-shadow:0 0 0 1px var(--a),0 20px 50px color-mix(in srgb,var(--a) 25%,transparent)}
+  .tier.pop::before{content:"Most popular";position:absolute;top:-12px;left:50%;transform:translateX(-50%);
+    background:linear-gradient(120deg,var(--a),var(--a2));color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:99px;letter-spacing:.04em}
+  .tier h3{font-size:1.1rem}
+  .price{font-family:var(--serif);font-size:2.8rem;font-variant-numeric:tabular-nums;line-height:1}
+  .price small{font-size:.9rem;color:var(--muted);font-family:var(--sans)}
+  .desc{color:var(--muted);font-size:14px;min-height:2.6em}
+  ul{list-style:none;display:grid;gap:.5em;font-size:14px;margin:.4em 0}
+  li{display:flex;gap:.5em;align-items:baseline;color:var(--fg)}
+  li::before{content:"✓";color:var(--a2);font-weight:800}
+  li.off{color:var(--muted)}li.off::before{content:"–";color:var(--muted)}
+  .cta{margin-top:auto;text-align:center;text-decoration:none;border-radius:12px;padding:12px;font-weight:600;font-size:14px;
+    border:1px solid var(--line);color:var(--fg)}
+  .tier.pop .cta{background:linear-gradient(120deg,var(--a),#8a7bff);border:0;color:#fff}
+  @page{size:A4 landscape;margin:12mm}
+  @media print{
+    :root{--bg:#fff;--fg:#111;--card:#fff;--line:#ddd;--muted:#555}
+    body{padding:0}body::before{display:none}.toggle{display:none}
+    .tiers{gap:10px}.tier{break-inside:avoid}
+    body{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <span class="kick">Pricing</span>
+    <h1>One file. Every document.</h1>
+    <p>Premium single-source documents that print to perfect PDF. Pick a plan &mdash; cancel anytime.</p>
+    <div class="toggle">
+      <button class="on" data-cycle="mo">Monthly</button>
+      <button data-cycle="yr">Yearly <span class="save">−20%</span></button>
+    </div>
+  </header>
+
+  <div class="tiers">
+    <div class="tier">
+      <h3>Starter</h3>
+      <div class="price" data-mo="0" data-yr="0">€0</div>
+      <p class="desc">For trying it out on real documents.</p>
+      <ul>
+        <li>3 core templates</li>
+        <li>Ctrl+P → PDF export</li>
+        <li class="off">Server rendering</li>
+        <li class="off">Generative covers</li>
+      </ul>
+      <a class="cta" href="#">Start free</a>
+    </div>
+
+    <div class="tier pop">
+      <h3>Pro</h3>
+      <div class="price"><span data-mo="19" data-yr="15">€19</span><small>/mo</small></div>
+      <p class="desc">For people who ship documents weekly.</p>
+      <ul>
+        <li>All templates + examples</li>
+        <li>Playwright server rendering</li>
+        <li>Generative covers &amp; charts</li>
+        <li>Brand tokens &amp; themes</li>
+      </ul>
+      <a class="cta" href="#">Go Pro</a>
+    </div>
+
+    <div class="tier">
+      <h3>Studio</h3>
+      <div class="price"><span data-mo="49" data-yr="39">€49</span><small>/mo</small></div>
+      <p class="desc">For teams &amp; client-facing output.</p>
+      <ul>
+        <li>Everything in Pro</li>
+        <li>PDF/A archival export</li>
+        <li>Custom template builds</li>
+        <li>Priority support</li>
+      </ul>
+      <a class="cta" href="#">Talk to us</a>
+    </div>
+  </div>
+
+<script>
+  const btns=[...document.querySelectorAll('.toggle button')];
+  const prices=[...document.querySelectorAll('.price [data-mo], .price[data-mo]')];
+  btns.forEach(b=>b.onclick=()=>{
+    btns.forEach(x=>x.classList.toggle('on',x===b));
+    const k=b.dataset.cycle;
+    prices.forEach(p=>{const v=p.dataset[k];if(v!==undefined)p.firstChild?
+      (p.childNodes[0].nodeValue='€'+v):(p.textContent='€'+v)});
+  });
+</script>
+</body>
+</html>

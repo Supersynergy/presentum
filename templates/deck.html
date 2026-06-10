@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Presentum — Deck</title>
+<style>
+  :root{
+    --bg:#0d0d10; --fg:#f2f0ea; --muted:#9a978d; --accent:#c08a2d; --accent2:#4da6ff;
+    --font:ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif;
+    --serif:ui-serif,Georgia,"Iowan Old Style",serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%}
+  body{background:var(--bg);color:var(--fg);font-family:var(--font);overflow:hidden}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  section.slide{height:100vh;scroll-snap-align:start;display:grid;place-content:center;
+    padding:8vh 10vw;position:relative;text-align:left}
+  section.slide h1{font-family:var(--serif);font-size:clamp(2.4rem,6vw,5rem);line-height:1.05;
+    margin:0 0 .3em;text-wrap:balance;letter-spacing:-.02em}
+  section.slide h2{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3rem);margin:0 0 .4em;text-wrap:balance}
+  section.slide p{font-size:clamp(1.1rem,2vw,1.6rem);color:var(--muted);max-width:22ch;text-wrap:pretty}
+  section.slide.cover{place-content:center;text-align:center}
+  section.slide.cover p{max-width:none;margin:0 auto}
+
+  /* subtle gradient mesh per slide (screen wow, prints flat) */
+  section.slide::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.5;
+    background:radial-gradient(60% 80% at 80% 20%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 60%),
+               radial-gradient(50% 70% at 10% 90%,color-mix(in srgb,var(--accent2) 18%,transparent),transparent 60%)}
+
+  ul.big{list-style:none;padding:0;margin:0;font-size:clamp(1.2rem,2.4vw,2rem)}
+  ul.big li{padding:.35em 0;border-bottom:1px solid #ffffff14;display:flex;gap:.6em;align-items:center}
+  ul.big li::before{content:"→";color:var(--accent)}
+
+  .num{font-family:var(--serif);font-variant-numeric:tabular-nums;font-size:clamp(3rem,9vw,7rem);color:var(--accent)}
+  .pageno{position:absolute;bottom:4vh;right:5vw;color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
+  .hint{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);color:var(--muted);
+    font-size:12px;opacity:.6}
+
+  /* print: 1 slide per page, landscape */
+  @page{size:A4 landscape;margin:0}
+  @media print{
+    body{overflow:visible}
+    .deck{height:auto;overflow:visible;display:block}
+    section.slide{height:100vh;page-break-after:always;break-after:page}
+    section.slide::before{opacity:.35}
+    .hint{display:none}
+    :root{--bg:#0d0d10}
+    body{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+  <section class="slide cover">
+    <h1>Presentum Deck</h1>
+    <p>Eine Datei. Vollbild-Präsentation am Screen, 1 Slide/Seite im PDF.</p>
+    <div class="pageno">01</div>
+  </section>
+
+  <section class="slide">
+    <h2>Das Problem</h2>
+    <p>Ein Gedanke pro Slide. Großer Text. Viel Luft.</p>
+    <div class="pageno">02</div>
+  </section>
+
+  <section class="slide">
+    <h2>Die Zahlen</h2>
+    <div class="num" data-count="231000">0</div>
+    <p>Leads pro Sekunde</p>
+    <div class="pageno">03</div>
+  </section>
+
+  <section class="slide">
+    <h2>Drei Punkte</h2>
+    <ul class="big">
+      <li>Single source: HTML</li>
+      <li>Export: ⌘P → PDF</li>
+      <li>Versand: direkt die Datei</li>
+    </ul>
+    <div class="pageno">04</div>
+  </section>
+
+  <section class="slide cover">
+    <h1>Danke.</h1>
+    <p>true@supersynergy.de</p>
+    <div class="pageno">05</div>
+  </section>
+</div>
+<div class="hint">↓ scrollen / Pfeiltasten · ⌘P = PDF (Querformat)</div>
+
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const deck=document.querySelector('.deck');
+  let i=0;
+  addEventListener('keydown',e=>{
+    if(['ArrowDown','ArrowRight',' ','PageDown'].includes(e.key)){i=Math.min(i+1,slides.length-1);go()}
+    if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){i=Math.max(i-1,0);go()}
+  });
+  function go(){slides[i].scrollIntoView()}
+  const rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const t=+el.dataset.count, f=n=>n.toLocaleString('de-DE');
+    if(rm){el.textContent=f(t);return}
+    let c=0,s=t/45;const iv=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(iv)}el.textContent=f(Math.round(c))},20);
+  });
+</script>
+</body>
+</html>

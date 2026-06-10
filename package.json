@@ -1,0 +1,16 @@
+{
+  "name": "presentum",
+  "version": "0.1.0",
+  "description": "Premium single-source documents in one HTML file — screen-perfect, prints to pixel-perfect PDF.",
+  "license": "MIT",
+  "author": "SuperSynergy <true@supersynergy.de>",
+  "type": "module",
+  "scripts": {
+    "pdf": "node scripts/render.mjs",
+    "shot": "node scripts/shoot.mjs",
+    "setup": "playwright install chromium"
+  },
+  "devDependencies": {
+    "playwright": "^1.60.0"
+  }
+}

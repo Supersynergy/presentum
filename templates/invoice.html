@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rechnung — Presentum</title>
+<style>
+  :root{
+    --bg:#f6f5f2; --fg:#1a1a1a; --muted:#777; --line:#e3e1db; --accent:#1f6f4f;
+    --card:#fff; --font:ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif;
+    --shadow:0 1px 3px rgba(0,0,0,.06),0 10px 30px rgba(0,0,0,.05);
+  }
+  *{box-sizing:border-box}
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:15px;line-height:1.55}
+  .sheet{max-width:780px;margin:32px auto;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;box-shadow:var(--shadow);padding:48px 52px}
+  header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}
+  .brand{font-size:22px;font-weight:700;letter-spacing:-.01em}
+  .brand small{display:block;font-weight:400;color:var(--muted);font-size:13px;margin-top:2px}
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;
+    color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent);
+    padding:6px 12px;border-radius:999px}
+  .badge::before{content:"✓";font-weight:800}
+  h1{font-size:28px;margin:28px 0 4px;letter-spacing:-.01em}
+  .meta{color:var(--muted);font-size:13px}
+  .parties{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0}
+  .parties h3{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0 0 6px}
+  table{width:100%;border-collapse:collapse;margin:20px 0;break-inside:avoid}
+  th,td{padding:11px 12px;border-bottom:1px solid var(--line);text-align:left}
+  th{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+  tfoot td{border:none;font-variant-numeric:tabular-nums}
+  tfoot .total td{font-size:20px;font-weight:700;border-top:2px solid var(--fg);padding-top:14px}
+  .total .num{color:var(--accent)}
+  footer{margin-top:32px;color:var(--muted);font-size:12px;border-top:1px solid var(--line);padding-top:16px}
+  .toolbar{position:fixed;top:16px;right:16px}
+  .toolbar button{font:inherit;font-size:13px;cursor:pointer;border:1px solid var(--line);
+    background:var(--card);padding:8px 14px;border-radius:10px;box-shadow:var(--shadow)}
+
+  @page{size:A4;margin:14mm}
+  @media print{
+    body{background:#fff}
+    .sheet{box-shadow:none;border:none;margin:0;max-width:none;padding:0;border-radius:0}
+    .toolbar{display:none}
+    body{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+    table,tfoot,.parties{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="print()">⌘P · PDF</button></div>
+<div class="sheet">
+  <header>
+    <div class="brand">SuperSynergy<small>true@supersynergy.de · DE-…</small></div>
+    <div class="badge">XRechnung validiert</div>
+  </header>
+
+  <h1>Rechnung 2026-0042</h1>
+  <p class="meta">Datum: 2026-06-09 · Leistungszeitraum: Mai 2026 · Fällig: 2026-06-23</p>
+
+  <div class="parties">
+    <div><h3>Von</h3>SuperSynergy<br>Musterstraße 1<br>80331 München</div>
+    <div><h3>An</h3>Kunde GmbH<br>Beispielweg 7<br>10115 Berlin</div>
+  </div>
+
+  <table>
+    <thead><tr><th>Position</th><th class="num">Menge</th><th class="num">Einzel €</th><th class="num">Summe €</th></tr></thead>
+    <tbody>
+      <tr><td>Beratung & Konzept</td><td class="num">8</td><td class="num">120,00</td><td class="num">960,00</td></tr>
+      <tr><td>Implementierung</td><td class="num">20</td><td class="num">110,00</td><td class="num">2.200,00</td></tr>
+      <tr><td>Review & Übergabe</td><td class="num">4</td><td class="num">120,00</td><td class="num">480,00</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="3" class="num">Netto</td><td class="num">3.640,00</td></tr>
+      <tr><td colspan="3" class="num">19% USt.</td><td class="num">691,60</td></tr>
+      <tr class="total"><td colspan="3" class="num">Gesamt</td><td class="num">4.331,60</td></tr>
+    </tfoot>
+  </table>
+
+  <footer>
+    Zahlbar innerhalb 14 Tagen ohne Abzug auf IBAN DE.. · Verwendungszweck: 2026-0042.<br>
+    Eine Datei — am Bildschirm lesbar, via ⌘P als PDF, direkt versendbar.
+  </footer>
+</div>
+</body>
+</html>

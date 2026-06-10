@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Certificate of Achievement</title>
+<style>
+  :root{
+    --ink:#1c1808; --gold:#b8902f; --gold2:#e7c66a; --paper:#fbf7ec; --muted:#7a7159;
+    --serif:ui-serif,"Iowan Old Style",Georgia,"Times New Roman",serif;
+    --script:"Snell Roundhand","Apple Chancery",cursive;
+  }
+  *{box-sizing:border-box;margin:0}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px;
+    font-family:var(--serif);color:var(--ink)}
+  .cert{position:relative;width:1000px;max-width:96vw;aspect-ratio:1.414/1;background:var(--paper);
+    box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;display:grid;place-content:center;text-align:center;gap:.2em;padding:8% 12%}
+  /* generative guilloché border (codedesigner) */
+  .cert svg.border{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .cert > *:not(svg){position:relative;z-index:1}
+  .seal{position:absolute;bottom:9%;right:11%;width:120px;height:120px;z-index:2}
+  .kick{letter-spacing:.4em;text-transform:uppercase;font-size:13px;color:var(--gold);font-weight:600}
+  .title{font-size:clamp(2rem,5vw,3.6rem);letter-spacing:.02em;margin:.1em 0}
+  .sub{color:var(--muted);font-style:italic;font-size:1.05rem}
+  .name{font-family:var(--script);font-size:clamp(2.6rem,7vw,5rem);color:var(--ink);line-height:1;margin:.3em 0;
+    background:linear-gradient(120deg,var(--gold),#8a6a1f);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .rule{width:46%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:.5em auto}
+  .for{max-width:42ch;margin:.3em auto;color:#3a3320;font-size:1.05rem}
+  .sigs{display:flex;justify-content:space-between;gap:40px;margin-top:2.4em;width:70%;margin-inline:auto}
+  .sig{flex:1;text-align:center}
+  .sig .line{border-top:1.5px solid var(--ink);padding-top:6px;font-size:13px;color:var(--muted)}
+  .sig .nm{font-family:var(--script);font-size:1.6rem;margin-bottom:2px}
+  .toolbar{position:fixed;top:14px;right:14px}
+  .toolbar button{font:13px var(--serif);cursor:pointer;border:1px solid #555;background:#333;color:#eee;padding:8px 14px;border-radius:8px}
+  @page{size:A4 landscape;margin:0}
+  @media print{
+    body{background:#fff;padding:0;display:block}
+    .cert{width:100%;max-width:none;height:100vh;aspect-ratio:auto;box-shadow:none}
+    .toolbar{display:none}
+    body{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="print()">⌘P · PDF</button></div>
+<div class="cert">
+  <svg class="border" viewBox="0 0 1000 707" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="14" y="14" width="972" height="679" fill="none" stroke="#b8902f" stroke-width="2"/>
+    <rect x="26" y="26" width="948" height="655" fill="none" stroke="#d8b85a" stroke-width="1"/>
+    <g id="guilloche" fill="none" stroke="#cda84a" stroke-width="0.6" opacity="0.55"></g>
+  </svg>
+
+  <svg class="seal" viewBox="0 0 120 120" aria-hidden="true">
+    <circle cx="60" cy="60" r="54" fill="none" stroke="#b8902f" stroke-width="2"/>
+    <circle cx="60" cy="60" r="44" fill="#b8902f" opacity="0.12"/>
+    <g id="seal-rays" stroke="#b8902f" stroke-width="1"></g>
+    <text x="60" y="58" text-anchor="middle" font-size="13" font-family="serif" fill="#8a6a1f" font-weight="700">SUPER</text>
+    <text x="60" y="74" text-anchor="middle" font-size="13" font-family="serif" fill="#8a6a1f" font-weight="700">SYNERGY</text>
+  </svg>
+
+  <span class="kick">Certificate of Achievement</span>
+  <div class="sub">This is proudly presented to</div>
+  <div class="name">Maxim</div>
+  <div class="rule"></div>
+  <p class="for">for outstanding mastery of single-source document engineering &mdash; authoring premium, accessible, print-perfect artifacts from one HTML file.</p>
+  <div class="sigs">
+    <div class="sig"><div class="nm">A. Director</div><div class="line">Program Director</div></div>
+    <div class="sig"><div class="nm">2026-06-10</div><div class="line">Date of Issue</div></div>
+  </div>
+</div>
+<script>
+  // guilloché: layered Lissajous curves (decorative)
+  const g=document.getElementById("guilloche");
+  for(let k=0;k<5;k++){let d="";const ph=k*0.6;
+    for(let t=0;t<6.3;t+=0.01){
+      const x=500+430*Math.cos(t)+ (18+k*4)*Math.cos((7+k)*t+ph);
+      const y=353+300*Math.sin(t)+ (18+k*4)*Math.sin((7+k)*t+ph);
+      d+=(t===0?"M":"L")+x.toFixed(1)+" "+y.toFixed(1)+" ";
+    }
+    const p=document.createElementNS("http://www.w3.org/2000/svg","path");p.setAttribute("d",d+"Z");g.appendChild(p);
+  }
+  const r=document.getElementById("seal-rays");
+  for(let i=0;i<36;i++){const a=i*Math.PI/18;
+    const l=document.createElementNS("http://www.w3.org/2000/svg","line");
+    l.setAttribute("x1",60+50*Math.cos(a));l.setAttribute("y1",60+50*Math.sin(a));
+    l.setAttribute("x2",60+54*Math.cos(a));l.setAttribute("y2",60+54*Math.sin(a));r.appendChild(l);}
+</script>
+</body>
+</html>

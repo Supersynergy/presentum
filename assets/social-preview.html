@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<style>
+  *{box-sizing:border-box;margin:0}
+  html,body{width:1280px;height:640px;overflow:hidden}
+  body{background:#07070b;color:#f4f2ec;font-family:ui-sans-serif,-apple-system,"Segoe UI",Inter,sans-serif;
+    display:grid;grid-template-columns:1.15fr .85fr;position:relative}
+  body::before{content:"";position:absolute;inset:-15%;z-index:0;opacity:.6;filter:blur(50px);
+    background:
+      radial-gradient(40% 50% at 78% 22%,#6d5cff,transparent 70%),
+      radial-gradient(45% 55% at 12% 82%,#c08a2d,transparent 70%),
+      radial-gradient(35% 45% at 60% 98%,#1fd1a5,transparent 70%)}
+  body::after{content:"";position:absolute;inset:0;z-index:0;opacity:.05;
+    background-image:linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px);background-size:52px 52px}
+  .left{position:relative;z-index:1;padding:74px 64px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .kick{color:#ffd98a;font-weight:800;letter-spacing:.22em;text-transform:uppercase;font-size:18px}
+  h1{font-family:ui-serif,Georgia,serif;font-size:84px;line-height:.98;letter-spacing:-.025em}
+  .grad{background:linear-gradient(120deg,#1fd1a5,#6d5cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+  p{color:#c8c5d4;font-size:25px;max-width:20ch;line-height:1.35}
+  .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .tag{border:1px solid #ffffff2e;border-radius:99px;padding:8px 16px;font-size:15px;color:#e7e4f0}
+  .right{position:relative;z-index:1;display:grid;place-items:center}
+  /* mock document card */
+  .doc{width:330px;height:430px;background:#fbfbfa;border-radius:14px;box-shadow:0 40px 90px rgba(0,0,0,.55);
+    transform:rotate(5deg);padding:30px 28px;color:#1a1a1a;overflow:hidden;position:relative}
+  .doc::after{content:"";position:absolute;left:0;right:0;top:-60%;height:60%;background:linear-gradient(180deg,transparent,#ffffffcc,transparent);transform:rotate(8deg)}
+  .doc .t{font-family:ui-serif,Georgia,serif;font-size:30px;line-height:1.05;letter-spacing:-.01em;margin-bottom:6px}
+  .doc .l{color:#8a8678;font-size:13px;margin-bottom:18px}
+  .doc .row{height:9px;border-radius:4px;background:#e8e5dd;margin:9px 0}
+  .doc .row.s{width:70%}.doc .row.m{width:88%}
+  .doc .k{display:flex;gap:10px;margin:18px 0}
+  .doc .kpi{flex:1;background:#fff;border:1px solid #ece9e1;border-radius:10px;padding:10px;text-align:center}
+  .doc .kpi b{font-family:ui-serif,Georgia,serif;font-size:22px;color:#c08a2d}
+  .doc .kpi span{display:block;font-size:9px;color:#8a8678;margin-top:2px}
+</style></head>
+<body>
+  <div class="left">
+    <span class="kick">SuperSynergy</span>
+    <h1>Presentum<br><span class="grad">single source.</span></h1>
+    <p>Premium documents in one HTML file. Screen-perfect. Print-perfect PDF.</p>
+    <div class="tags">
+      <span class="tag">HTML → PDF</span>
+      <span class="tag">print-CSS</span>
+      <span class="tag">searchable</span>
+      <span class="tag">offline</span>
+    </div>
+  </div>
+  <div class="right">
+    <div class="doc">
+      <div class="t">Quarterly Report</div>
+      <div class="l">2026 · single source of truth</div>
+      <div class="row m"></div><div class="row"></div><div class="row s"></div>
+      <div class="k">
+        <div class="kpi"><b>231k</b><span>LEADS/S</span></div>
+        <div class="kpi"><b>311k</b><span>DOCS</span></div>
+        <div class="kpi"><b>8ms</b><span>RECALL</span></div>
+      </div>
+      <div class="row m"></div><div class="row"></div><div class="row s"></div><div class="row m"></div>
+    </div>
+  </div>
+</body></html>
