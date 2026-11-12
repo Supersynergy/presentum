@@ -9,13 +9,15 @@ PDF is an export, not the source.
 
 </div>
 
+[🚀 Quick start](#quick-start) · [🖼️ Examples](#examples) · [📄 Templates](#templates) · [🛠️ Scripts](#scripts) · [License](#license)
+
 ---
 
 ## Why
 
-The browser is the best layout engine on earth, and it ships everywhere. Author once in HTML and let the reader choose: read it live (search, links, dark-mode, responsive), or print it to a perfect PDF (`⌘P`). One artifact, one source of truth, no more maintaining two copies of everything.
+Author a document once in HTML. Readers can open it in a browser, follow links and search its text, then export a PDF when fixed pages are needed. Screen and print styles live in the same source file.
 
-Verified 2026 (Apryse 10-method comparison + code survey): HTML is the best authoring layer. Avoid image exporters (`jsPDF`/`html2canvas` → non-searchable image dump) and dead engines (`wkhtmltopdf` → abandoned 2023, SSRF risk).
+Start with a template below. Check page breaks and fonts in print preview before sharing a PDF.
 
 ## Quick start
 
@@ -35,13 +37,21 @@ node scripts/render.mjs ~/Desktop/mein-doc.html ~/Desktop/mein-doc.pdf
 
 Five self-contained, print-ready showcases in [`examples/`](examples/). Each is ONE file, open offline, `⌘P` to PDF.
 
-| | |
-|---|---|
-| **Investor pitch deck**, animated gradient mesh, count-up metrics, 1 slide/page in print. [`01-pitch-deck.html`](examples/01-pitch-deck.html) | ![Pitch](assets/ex01-pitch.png) |
-| **Whitepaper**, generative harmonograph cover, embedded static-SVG charts, footnotes, running headers. [`02-whitepaper.html`](examples/02-whitepaper.html) | ![Whitepaper](assets/ex02-whitepaper.png) |
-| **Certificate**, generative guilloché border + seal, gold foil, A4 landscape. [`03-certificate.html`](examples/03-certificate.html) | ![Certificate](assets/ex03-certificate.png) |
-| **Résumé / CV**, sidebar, animated skill bars, one-page print-perfect. [`04-resume.html`](examples/04-resume.html) | ![Resume](assets/ex04-resume.png) |
-| **Pricing page**, tier cards, monthly/yearly toggle, FOMO badge, gradient glow. [`05-pricing.html`](examples/05-pricing.html) | ![Pricing](assets/ex05-pricing.png) |
+### Pitch deck
+
+[Open the pitch deck](examples/01-pitch-deck.html) — animated screen layout with one slide per printed page.
+
+![Pitch deck preview](assets/ex01-pitch.png)
+
+<details>
+<summary>🖼️ Explore four more examples</summary>
+
+- [Whitepaper](examples/02-whitepaper.html): SVG charts, footnotes and running headers.
+- [Certificate](examples/03-certificate.html): ornamental border and landscape print layout.
+- [Résumé](examples/04-resume.html): a sidebar and compact single-page layout.
+- [Pricing page](examples/05-pricing.html): tiers and a monthly/yearly toggle.
+
+</details>
 
 ## Templates
 
