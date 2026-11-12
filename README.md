@@ -55,11 +55,20 @@ Five self-contained, print-ready showcases in [`examples/`](examples/). Each is 
 
 ## Templates
 
-| File | Use |
-|---|---|
-| [`templates/document.html`](templates/document.html) | Report / proposal, auto-TOC, scroll-spy, dark/light, search, count-up KPIs, full print-CSS |
-| [`templates/deck.html`](templates/deck.html) | Slide deck, scroll-snap fullscreen, 1 slide/page landscape in PDF |
-| [`templates/invoice.html`](templates/invoice.html) | Invoice / receipt, totals, trust badge, A4 print-CSS |
+<details>
+<summary><strong>📋 Show 3 entries</strong></summary>
+
+- **[`templates/document.html`](templates/document.html)**<br>
+  Use: Report / proposal, auto-TOC, scroll-spy, dark/light, search, count-up KPIs, full print-CSS
+
+- **[`templates/deck.html`](templates/deck.html)**<br>
+  Use: Slide deck, scroll-snap fullscreen, 1 slide/page landscape in PDF
+
+- **[`templates/invoice.html`](templates/invoice.html)**<br>
+  Use: Invoice / receipt, totals, trust badge, A4 print-CSS
+
+</details>
+
 
 ## What it does
 
@@ -75,12 +84,23 @@ Five self-contained, print-ready showcases in [`examples/`](examples/). Each is 
 
 ## Engine choice (server pipelines)
 
-| Need | Use |
-|---|---|
-| Node + JS/charts | **Playwright** (`scripts/render.mjs`) |
-| Python, no JS | **WeasyPrint** |
-| Highest print fidelity + budget | **PrinceXML / DocRaptor** |
-| Plain text → PDF, no HTML | **Typst** |
+<details>
+<summary><strong>📋 Show 4 entries</strong></summary>
+
+- **Node + JS/charts**<br>
+  Use: **Playwright** (`scripts/render.mjs`)
+
+- **Python, no JS**<br>
+  Use: **WeasyPrint**
+
+- **Highest print fidelity + budget**<br>
+  Use: **PrinceXML / DocRaptor**
+
+- **Plain text → PDF, no HTML**<br>
+  Use: **Typst**
+
+</details>
+
 
 ## Scripts
 
